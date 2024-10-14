@@ -5,11 +5,11 @@ import net.azeti.recipe.api.exception.RecipeNotFoundException
 import net.azeti.recipe.api.exception.UserNotFoundException
 import net.azeti.recipe.api.recipe.dto.RecipeRequest
 import net.azeti.recipe.api.recipe.dto.RecipeResponse
+import net.azeti.recipe.core.recipe.RecipeService
+import net.azeti.recipe.core.user.UserService
 import net.azeti.recipe.extensions.FullRecipeId
 import net.azeti.recipe.extensions.expectTrueOr
 import net.azeti.recipe.extensions.toRecipeId
-import net.azeti.recipe.recipe.RecipeService
-import net.azeti.recipe.user.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.validation.annotation.Validated

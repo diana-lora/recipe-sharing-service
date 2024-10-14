@@ -1,4 +1,4 @@
-package net.azeti.recipe.user
+package net.azeti.recipe.core.user
 
 import net.azeti.recipe.api.user.dto.LoginRequest
 import net.azeti.recipe.api.user.dto.LoginResponse

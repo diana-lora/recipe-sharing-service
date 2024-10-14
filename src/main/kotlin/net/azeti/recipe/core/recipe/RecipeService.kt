@@ -1,4 +1,4 @@
-package net.azeti.recipe.recipe
+package net.azeti.recipe.core.recipe
 
 import net.azeti.recipe.api.recipe.dto.RecipeRequest
 import net.azeti.recipe.api.recipe.dto.RecipeResponse

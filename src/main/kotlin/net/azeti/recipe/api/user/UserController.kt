@@ -5,7 +5,7 @@ import net.azeti.recipe.api.user.dto.LoginRequest
 import net.azeti.recipe.api.user.dto.LoginResponse
 import net.azeti.recipe.api.user.dto.RegistrationRequest
 import net.azeti.recipe.api.user.dto.RegistrationResponse
-import net.azeti.recipe.user.UserService
+import net.azeti.recipe.core.user.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody

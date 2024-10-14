@@ -2,11 +2,11 @@ package net.azeti.recipe.helpers
 
 import net.azeti.recipe.api.recipe.dto.RecipeRequest
 import net.azeti.recipe.api.recipe.dto.toEnum
+import net.azeti.recipe.core.recipe.persistence.IngredientEntity
+import net.azeti.recipe.core.recipe.persistence.IngredientRepository
+import net.azeti.recipe.core.recipe.persistence.RecipeEntity
+import net.azeti.recipe.core.recipe.persistence.RecipeRepository
 import net.azeti.recipe.extensions.FullRecipeId
-import net.azeti.recipe.recipe.persistence.IngredientEntity
-import net.azeti.recipe.recipe.persistence.IngredientRepository
-import net.azeti.recipe.recipe.persistence.RecipeEntity
-import net.azeti.recipe.recipe.persistence.RecipeRepository
 
 class RecipeTestHelper(
     private val userTestHelper: UserTestHelper,

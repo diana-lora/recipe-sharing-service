@@ -1,6 +1,6 @@
 package net.azeti.recipe.security.auth
 
-import net.azeti.recipe.user.persistence.UserRepository
+import net.azeti.recipe.core.user.persistence.UserRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException

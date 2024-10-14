@@ -1,7 +1,7 @@
-package net.azeti.recipe.recipe.persistence
+package net.azeti.recipe.core.recipe.persistence
 
 import jakarta.persistence.criteria.Predicate
-import net.azeti.recipe.user.persistence.UserEntity
+import net.azeti.recipe.core.user.persistence.UserEntity
 import org.springframework.data.jpa.domain.Specification
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor
