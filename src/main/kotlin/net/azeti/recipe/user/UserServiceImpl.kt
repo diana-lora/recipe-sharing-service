@@ -8,6 +8,8 @@ import net.azeti.recipe.api.user.dto.RegistrationResponse
 import net.azeti.recipe.extensions.expectTrueOr
 import net.azeti.recipe.security.JwtService
 import net.azeti.recipe.security.auth.CustomUserDetails
+import net.azeti.recipe.user.persistence.UserEntity
+import net.azeti.recipe.user.persistence.UserRepository
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 import org.springframework.security.authentication.AuthenticationManager
@@ -45,5 +47,13 @@ class UserServiceImpl(
         return LoginResponse(token)
     }
 
-    override fun findByUsername(username: String): UserEntity? = userRepository.findByUsername(username)
+    override fun findByUsername(username: String): CustomUserDetails? =
+        userRepository.findByUsername(username)?.let {
+            CustomUserDetails(
+                id = it.id,
+                username = it.username,
+                email = it.email,
+                password = it.password,
+            )
+        }
 }

@@ -3,8 +3,8 @@ package net.azeti.recipe.client
 import net.azeti.recipe.AbstractExternalServiceIntegrationTest
 import net.azeti.recipe.api.exception.ExternalServiceDataUnavailableException
 import net.azeti.recipe.api.exception.ExternalServiceException
-import net.azeti.recipe.expectedBerlinWeatherResponse
-import net.azeti.recipe.mockWeatherResponseAPI
+import net.azeti.recipe.helpers.expectedBerlinWeatherResponse
+import net.azeti.recipe.helpers.mockWeatherResponseAPI
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows

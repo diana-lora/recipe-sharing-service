@@ -2,18 +2,19 @@ package net.azeti.recipe.api.recipe
 
 import io.kotest.matchers.nulls.shouldNotBeNull
 import net.azeti.recipe.AbstractRestIntegrationTest
-import net.azeti.recipe.UserTestHelper
 import net.azeti.recipe.api.recipe.RecipeUris.RECIPES_ID_URI
 import net.azeti.recipe.api.recipe.RecipeUris.RECIPES_URI
 import net.azeti.recipe.api.recipe.RecipeUris.USER_RECIPES_URI
 import net.azeti.recipe.api.recipe.dto.IngredientRequest
 import net.azeti.recipe.api.recipe.dto.IngredientUnitsApi
-import net.azeti.recipe.defaultRecipeRequest
-import net.azeti.recipe.defaultUserRegistration
-import net.azeti.recipe.deleteRequest
-import net.azeti.recipe.getRequest
-import net.azeti.recipe.postRequest
-import net.azeti.recipe.putRequest
+import net.azeti.recipe.helpers.RecipeTestHelper
+import net.azeti.recipe.helpers.UserTestHelper
+import net.azeti.recipe.helpers.defaultRecipeRequest
+import net.azeti.recipe.helpers.defaultUserRegistration
+import net.azeti.recipe.helpers.deleteRequest
+import net.azeti.recipe.helpers.getRequest
+import net.azeti.recipe.helpers.postRequest
+import net.azeti.recipe.helpers.putRequest
 import net.azeti.recipe.utils.mapper
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -23,7 +24,7 @@ class RecipeControllerSecurityTest
     @Autowired
     constructor(
         private val userTestHelper: UserTestHelper,
-        private val recipeTestHelper: net.azeti.recipe.api.recipe.RecipeTestHelper,
+        private val recipeTestHelper: RecipeTestHelper,
     ) : AbstractRestIntegrationTest() {
         @Test
         fun `Unauthorized user creates a recipe for another user, then forbidden`() {

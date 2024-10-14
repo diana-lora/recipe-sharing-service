@@ -5,11 +5,11 @@ import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import net.azeti.recipe.AbstractRestIntegrationTest
-import net.azeti.recipe.UserTestHelper
 import net.azeti.recipe.api.exception.ErrorApi
 import net.azeti.recipe.api.user.dto.LoginRequest
-import net.azeti.recipe.defaultUserRegistration
-import net.azeti.recipe.postRequest
+import net.azeti.recipe.helpers.UserTestHelper
+import net.azeti.recipe.helpers.defaultUserRegistration
+import net.azeti.recipe.helpers.postRequest
 import net.azeti.recipe.utils.mapper
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

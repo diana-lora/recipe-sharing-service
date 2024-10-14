@@ -7,28 +7,22 @@ import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldStartWith
 import net.azeti.recipe.AbstractRestIntegrationTest
-import net.azeti.recipe.UserTestHelper
 import net.azeti.recipe.api.exception.ErrorApi
 import net.azeti.recipe.api.recipe.RecipeUris.RECIPES_ID_URI
 import net.azeti.recipe.api.recipe.RecipeUris.RECIPES_URI
 import net.azeti.recipe.api.recipe.RecipeUris.USER_RECIPES_URI
 import net.azeti.recipe.api.recipe.dto.IngredientRequest
 import net.azeti.recipe.api.recipe.dto.IngredientUnitsApi
-import net.azeti.recipe.api.recipe.dto.RecipeRequest
 import net.azeti.recipe.api.recipe.dto.RecipeResponse
-import net.azeti.recipe.api.recipe.dto.toEnum
-import net.azeti.recipe.defaultRecipeRequest
-import net.azeti.recipe.defaultUserRegistration
-import net.azeti.recipe.deleteRequest
-import net.azeti.recipe.extensions.FullRecipeId
 import net.azeti.recipe.extensions.toRecipeId
-import net.azeti.recipe.getRequest
-import net.azeti.recipe.postRequest
-import net.azeti.recipe.putRequest
-import net.azeti.recipe.recipe.IngredientEntity
-import net.azeti.recipe.recipe.IngredientRepository
-import net.azeti.recipe.recipe.RecipeEntity
-import net.azeti.recipe.recipe.RecipeRepository
+import net.azeti.recipe.helpers.RecipeTestHelper
+import net.azeti.recipe.helpers.UserTestHelper
+import net.azeti.recipe.helpers.defaultRecipeRequest
+import net.azeti.recipe.helpers.defaultUserRegistration
+import net.azeti.recipe.helpers.deleteRequest
+import net.azeti.recipe.helpers.getRequest
+import net.azeti.recipe.helpers.postRequest
+import net.azeti.recipe.helpers.putRequest
 import net.azeti.recipe.security.auth.CustomUserDetails
 import net.azeti.recipe.utils.mapper
 import org.junit.jupiter.api.Test
@@ -39,7 +33,7 @@ class RecipeControllerTest
     @Autowired
     constructor(
         private val userTestHelper: UserTestHelper,
-        private val recipeTestHelper: net.azeti.recipe.api.recipe.RecipeTestHelper,
+        private val recipeTestHelper: RecipeTestHelper,
     ) : AbstractRestIntegrationTest() {
         @Test
         fun `User creates a recipe`() {
@@ -243,42 +237,4 @@ object RecipeUris {
     const val RECIPES_URI = "/v1/recipes"
     const val USER_RECIPES_URI = "/v1/users/{username}/recipes"
     const val RECIPES_ID_URI = "/v1/recipes/{id}"
-}
-
-class RecipeTestHelper(
-    private val userTestHelper: UserTestHelper,
-    private val recipeRepository: RecipeRepository,
-    private val ingredientRepository: IngredientRepository,
-) {
-    fun findRecipeById(id: Long): RecipeEntity? {
-        val optional = recipeRepository.findById(id)
-        return if (optional.isPresent) optional.get() else null
-    }
-
-    fun createRecipe(request: RecipeRequest): FullRecipeId {
-        val user = userTestHelper.findByUsername(request.username)!!
-        val recipe =
-            recipeRepository.save(
-                RecipeEntity(
-                    title = request.title,
-                    description = request.description,
-                    instructions = request.instructions,
-                    servings = request.servings,
-                    user = user,
-                ),
-            )
-        val ingredients =
-            ingredientRepository.saveAll(
-                request.ingredients.map {
-                    IngredientEntity(
-                        recipeId = recipe.id,
-                        value = it.value,
-                        unit = it.unit.toEnum(),
-                        type = it.type,
-                    )
-                },
-            )
-        recipe.ingredients = ingredients
-        return "${user.username}_${recipe.id}"
-    }
 }

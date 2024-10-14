@@ -1,4 +1,4 @@
-package net.azeti.recipe
+package net.azeti.recipe.helpers
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.aResponse

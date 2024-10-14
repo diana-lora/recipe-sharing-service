@@ -1,4 +1,4 @@
-package net.azeti.recipe
+package net.azeti.recipe.helpers
 
 import net.azeti.recipe.security.auth.JwtAuthorizationHeader.TOKEN_HEADER
 import net.azeti.recipe.security.auth.JwtAuthorizationHeader.TOKEN_PREFIX

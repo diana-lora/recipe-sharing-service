@@ -6,17 +6,18 @@ import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import net.azeti.recipe.AbstractRestIntegrationTest
-import net.azeti.recipe.UserTestHelper
 import net.azeti.recipe.api.exception.ErrorApi
 import net.azeti.recipe.api.recipe.dto.RecipeResponse
 import net.azeti.recipe.client.VisualCrossingClient
 import net.azeti.recipe.config.props.VisualCrossingProperties
-import net.azeti.recipe.defaultRecipeRequest
-import net.azeti.recipe.defaultUserRegistration
-import net.azeti.recipe.expectedBerlinWeatherResponse
-import net.azeti.recipe.fromCelsiusToFahrenheit
-import net.azeti.recipe.getRequest
-import net.azeti.recipe.mockWeatherResponseAPI
+import net.azeti.recipe.helpers.RecipeTestHelper
+import net.azeti.recipe.helpers.UserTestHelper
+import net.azeti.recipe.helpers.defaultRecipeRequest
+import net.azeti.recipe.helpers.defaultUserRegistration
+import net.azeti.recipe.helpers.expectedBerlinWeatherResponse
+import net.azeti.recipe.helpers.fromCelsiusToFahrenheit
+import net.azeti.recipe.helpers.getRequest
+import net.azeti.recipe.helpers.mockWeatherResponseAPI
 import net.azeti.recipe.utils.mapper
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
@@ -29,7 +30,7 @@ class RecipeRecommendationControllerTest
     @Autowired
     constructor(
         private val userTestHelper: UserTestHelper,
-        private val recipeTestHelper: net.azeti.recipe.api.recipe.RecipeTestHelper,
+        private val recipeTestHelper: RecipeTestHelper,
         private val visualCrossingClient: VisualCrossingClient,
     ) : AbstractRestIntegrationTest() {
         private val wireMockServer = WireMockServer(8080)

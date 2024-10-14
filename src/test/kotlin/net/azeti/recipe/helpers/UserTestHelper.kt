@@ -1,10 +1,10 @@
-package net.azeti.recipe
+package net.azeti.recipe.helpers
 
 import net.azeti.recipe.api.user.dto.RegistrationRequest
 import net.azeti.recipe.security.JwtService
 import net.azeti.recipe.security.auth.CustomUserDetails
-import net.azeti.recipe.user.UserEntity
-import net.azeti.recipe.user.UserRepository
+import net.azeti.recipe.user.persistence.UserEntity
+import net.azeti.recipe.user.persistence.UserRepository
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 
 class UserTestHelper(

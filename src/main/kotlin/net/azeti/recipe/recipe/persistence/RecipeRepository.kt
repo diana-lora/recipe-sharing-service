@@ -1,7 +1,7 @@
-package net.azeti.recipe.recipe
+package net.azeti.recipe.recipe.persistence
 
 import jakarta.persistence.criteria.Predicate
-import net.azeti.recipe.user.UserEntity
+import net.azeti.recipe.user.persistence.UserEntity
 import org.springframework.data.jpa.domain.Specification
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor
@@ -16,10 +16,10 @@ interface RecipeRepository : JpaRepository<RecipeEntity, Long>, JpaSpecification
         title: String,
     ): Boolean
 
-    @Query("SELECT r FROM RecipeEntity r JOIN FETCH r.ingredients JOIN FETCH r.user WHERE r.user.id = :userId")
+    @Query("SELECT r FROM RecipeEntity r LEFT JOIN FETCH r.ingredients JOIN FETCH r.user WHERE r.user.id = :userId")
     fun findByUserId(userId: Long): List<RecipeEntity>
 
-    @Query("SELECT r FROM RecipeEntity r JOIN FETCH r.ingredients JOIN FETCH r.user WHERE r.id = :id")
+    @Query("SELECT r FROM RecipeEntity r LEFT JOIN FETCH r.ingredients JOIN FETCH r.user WHERE r.id = :id")
     fun findByIdAndFetchAll(id: Long): RecipeEntity?
 
     companion object {

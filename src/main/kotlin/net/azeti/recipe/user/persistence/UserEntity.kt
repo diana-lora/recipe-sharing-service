@@ -1,4 +1,4 @@
-package net.azeti.recipe.user
+package net.azeti.recipe.user.persistence
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

@@ -6,12 +6,13 @@ import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
 import net.azeti.recipe.AbstractRestIntegrationTest
-import net.azeti.recipe.UserTestHelper
 import net.azeti.recipe.api.recipe.RecipeUris.RECIPES_URI
 import net.azeti.recipe.api.recipe.dto.RecipeResponse
-import net.azeti.recipe.defaultRecipeRequest
-import net.azeti.recipe.defaultUserRegistration
-import net.azeti.recipe.getRequest
+import net.azeti.recipe.helpers.RecipeTestHelper
+import net.azeti.recipe.helpers.UserTestHelper
+import net.azeti.recipe.helpers.defaultRecipeRequest
+import net.azeti.recipe.helpers.defaultUserRegistration
+import net.azeti.recipe.helpers.getRequest
 import net.azeti.recipe.security.auth.CustomUserDetails
 import net.azeti.recipe.utils.mapper
 import org.junit.jupiter.api.Test
@@ -22,7 +23,7 @@ class RecipeSearchControllerTest
     @Autowired
     constructor(
         private val userTestHelper: UserTestHelper,
-        private val recipeTestHelper: net.azeti.recipe.api.recipe.RecipeTestHelper,
+        private val recipeTestHelper: RecipeTestHelper,
     ) : AbstractRestIntegrationTest() {
         @Test
         fun `User searches for recipes by username, then`() {
