@@ -1,7 +1,8 @@
-package net.azeti.recipe.security
+package net.azeti.recipe.security.services
 
 import net.azeti.recipe.extensions.FullRecipeId
 import net.azeti.recipe.extensions.toUsername
+import net.azeti.recipe.security.SecurityContextUtils
 import org.springframework.stereotype.Component
 
 @Component

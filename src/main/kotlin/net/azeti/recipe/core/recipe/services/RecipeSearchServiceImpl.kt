@@ -1,7 +1,7 @@
-package net.azeti.recipe.core.recipe
+package net.azeti.recipe.core.recipe.services
 
 import net.azeti.recipe.api.recipe.dto.RecipeResponse
-import net.azeti.recipe.core.recipe.persistence.RecipeRepository
+import net.azeti.recipe.core.recipe.repositories.RecipeRepository
 import org.springframework.stereotype.Service
 
 @Service

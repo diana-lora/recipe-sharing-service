@@ -1,14 +1,14 @@
-package net.azeti.recipe.core.user
+package net.azeti.recipe.core.user.services
 
 import net.azeti.recipe.api.exception.DuplicateUserException
 import net.azeti.recipe.api.user.dto.LoginRequest
 import net.azeti.recipe.api.user.dto.LoginResponse
 import net.azeti.recipe.api.user.dto.RegistrationRequest
 import net.azeti.recipe.api.user.dto.RegistrationResponse
-import net.azeti.recipe.core.user.persistence.UserEntity
-import net.azeti.recipe.core.user.persistence.UserRepository
+import net.azeti.recipe.core.user.model.UserEntity
+import net.azeti.recipe.core.user.repositories.UserRepository
 import net.azeti.recipe.extensions.expectTrueOr
-import net.azeti.recipe.security.JwtService
+import net.azeti.recipe.security.services.JwtService
 import net.azeti.recipe.security.auth.CustomUserDetails
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory

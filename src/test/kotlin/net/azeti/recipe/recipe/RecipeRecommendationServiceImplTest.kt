@@ -7,8 +7,8 @@ import net.azeti.recipe.api.recipe.dto.RecipeResponse
 import net.azeti.recipe.client.VisualCrossingClient
 import net.azeti.recipe.client.WeatherResponse
 import net.azeti.recipe.config.props.RecipeRecommendationProperties
-import net.azeti.recipe.core.recipe.RecipeRecommendationServiceImpl
-import net.azeti.recipe.core.recipe.RecipeService
+import net.azeti.recipe.core.recipe.services.RecipeRecommendationServiceImpl
+import net.azeti.recipe.core.recipe.services.RecipeService
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 

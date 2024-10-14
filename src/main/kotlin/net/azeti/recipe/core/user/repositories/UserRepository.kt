@@ -1,5 +1,6 @@
-package net.azeti.recipe.core.user.persistence
+package net.azeti.recipe.core.user.repositories
 
+import net.azeti.recipe.core.user.model.UserEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

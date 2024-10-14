@@ -3,7 +3,7 @@ package net.azeti.recipe.security.auth
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import net.azeti.recipe.security.JwtService
+import net.azeti.recipe.security.services.JwtService
 import net.azeti.recipe.security.auth.JwtAuthorizationHeader.TOKEN_HEADER
 import net.azeti.recipe.security.auth.JwtAuthorizationHeader.TOKEN_PREFIX
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken

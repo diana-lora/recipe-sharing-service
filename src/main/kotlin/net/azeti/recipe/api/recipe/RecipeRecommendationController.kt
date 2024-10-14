@@ -2,7 +2,7 @@ package net.azeti.recipe.api.recipe
 
 import net.azeti.recipe.api.exception.RecipeNotFoundException
 import net.azeti.recipe.api.recipe.dto.RecipeResponse
-import net.azeti.recipe.core.recipe.RecipeRecommendationService
+import net.azeti.recipe.core.recipe.services.RecipeRecommendationService
 import net.azeti.recipe.security.SecurityContextUtils
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

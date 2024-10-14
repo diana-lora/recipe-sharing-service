@@ -3,7 +3,7 @@ package net.azeti.recipe
 import com.github.tomakehurst.wiremock.WireMockServer
 import net.azeti.recipe.client.VisualCrossingClient
 import net.azeti.recipe.config.props.VisualCrossingProperties
-import net.azeti.recipe.security.JwtService
+import net.azeti.recipe.security.services.JwtService
 import net.azeti.recipe.security.auth.CustomUserDetails
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach

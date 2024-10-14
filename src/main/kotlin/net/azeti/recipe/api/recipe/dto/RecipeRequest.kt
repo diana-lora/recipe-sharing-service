@@ -3,7 +3,7 @@ package net.azeti.recipe.api.recipe.dto
 import jakarta.validation.Valid
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
-import net.azeti.recipe.core.recipe.persistence.IngredientUnits
+import net.azeti.recipe.core.recipe.model.IngredientUnits
 
 data class RecipeRequest(
     @field:NotBlank(message = "title.blank")

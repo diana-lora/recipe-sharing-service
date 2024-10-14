@@ -1,4 +1,4 @@
-package net.azeti.recipe.core.recipe
+package net.azeti.recipe.core.recipe.services
 
 import net.azeti.recipe.api.exception.DuplicateRecipeException
 import net.azeti.recipe.api.recipe.dto.IngredientResponse
@@ -6,11 +6,11 @@ import net.azeti.recipe.api.recipe.dto.RecipeRequest
 import net.azeti.recipe.api.recipe.dto.RecipeResponse
 import net.azeti.recipe.api.recipe.dto.toApi
 import net.azeti.recipe.api.recipe.dto.toEnum
-import net.azeti.recipe.core.recipe.persistence.IngredientEntity
-import net.azeti.recipe.core.recipe.persistence.IngredientRepository
-import net.azeti.recipe.core.recipe.persistence.RecipeEntity
-import net.azeti.recipe.core.recipe.persistence.RecipeRepository
-import net.azeti.recipe.core.user.persistence.UserEntity
+import net.azeti.recipe.core.recipe.model.IngredientEntity
+import net.azeti.recipe.core.recipe.repositories.IngredientRepository
+import net.azeti.recipe.core.recipe.model.RecipeEntity
+import net.azeti.recipe.core.recipe.repositories.RecipeRepository
+import net.azeti.recipe.core.user.model.UserEntity
 import net.azeti.recipe.extensions.expectTrueOr
 import net.azeti.recipe.security.auth.CustomUserDetails
 import org.springframework.data.jpa.domain.Specification

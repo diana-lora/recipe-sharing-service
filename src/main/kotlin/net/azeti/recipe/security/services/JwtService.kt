@@ -1,4 +1,4 @@
-package net.azeti.recipe.security
+package net.azeti.recipe.security.services
 
 import io.jsonwebtoken.Claims
 import net.azeti.recipe.security.auth.CustomUserDetails

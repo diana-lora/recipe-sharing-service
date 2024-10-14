@@ -1,12 +1,12 @@
 package net.azeti.recipe
 
 import net.azeti.recipe.config.props.SecurityJwtProperties
-import net.azeti.recipe.core.recipe.persistence.IngredientRepository
-import net.azeti.recipe.core.recipe.persistence.RecipeRepository
-import net.azeti.recipe.core.user.persistence.UserRepository
+import net.azeti.recipe.core.recipe.repositories.IngredientRepository
+import net.azeti.recipe.core.recipe.repositories.RecipeRepository
+import net.azeti.recipe.core.user.repositories.UserRepository
 import net.azeti.recipe.helpers.RecipeTestHelper
 import net.azeti.recipe.helpers.UserTestHelper
-import net.azeti.recipe.security.JwtService
+import net.azeti.recipe.security.services.JwtService
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.test.context.TestConfiguration
 import org.springframework.context.annotation.Bean

@@ -2,7 +2,7 @@ package net.azeti.recipe.api.recipe
 
 import net.azeti.recipe.api.exception.InvalidParameterException
 import net.azeti.recipe.api.recipe.dto.RecipeResponse
-import net.azeti.recipe.core.recipe.RecipeSearchService
+import net.azeti.recipe.core.recipe.services.RecipeSearchService
 import net.azeti.recipe.extensions.expectTrueOr
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping

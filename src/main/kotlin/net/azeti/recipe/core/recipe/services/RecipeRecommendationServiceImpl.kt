@@ -1,4 +1,4 @@
-package net.azeti.recipe.core.recipe
+package net.azeti.recipe.core.recipe.services
 
 import net.azeti.recipe.api.recipe.dto.RecipeResponse
 import net.azeti.recipe.client.VisualCrossingClient
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 @Service
 class RecipeRecommendationServiceImpl(
     private val recipeService: RecipeService,
+    // TODO create a WeatherService as an abstraction layer of the VisualCrossingClient
     private val visualCrossingClient: VisualCrossingClient,
     private val props: RecipeRecommendationProperties,
 ) : RecipeRecommendationService {

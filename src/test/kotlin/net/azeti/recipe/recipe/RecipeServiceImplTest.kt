@@ -6,11 +6,11 @@ import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import net.azeti.recipe.api.exception.DuplicateRecipeException
-import net.azeti.recipe.core.recipe.RecipeServiceImpl
-import net.azeti.recipe.core.recipe.persistence.IngredientRepository
-import net.azeti.recipe.core.recipe.persistence.RecipeEntity
-import net.azeti.recipe.core.recipe.persistence.RecipeRepository
-import net.azeti.recipe.core.user.persistence.UserEntity
+import net.azeti.recipe.core.recipe.services.RecipeServiceImpl
+import net.azeti.recipe.core.recipe.repositories.IngredientRepository
+import net.azeti.recipe.core.recipe.model.RecipeEntity
+import net.azeti.recipe.core.recipe.repositories.RecipeRepository
+import net.azeti.recipe.core.user.model.UserEntity
 import net.azeti.recipe.helpers.defaultCustomUserDetails
 import net.azeti.recipe.helpers.defaultRecipeRequest
 import org.junit.jupiter.api.Test
