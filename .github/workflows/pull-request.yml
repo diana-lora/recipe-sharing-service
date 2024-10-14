@@ -1,0 +1,36 @@
+name: Build and Test
+
+on:
+    pull_request:
+
+jobs:
+    build-and-test:
+        name: Build and Test
+        runs-on: ubuntu-latest
+        timeout-minutes: 10
+        steps:
+            -   name: checkout code
+                uses: actions/checkout@v4
+                with:
+                    repository: ${{ github.event.pull_request.head.repo.full_name }}
+                    ref: ${{ github.event.pull_request.head.ref }}
+            -   name: setup java
+                uses: actions/setup-java@v4.2.1
+                with:
+                    distribution: 'corretto'
+                    java-version: 21
+            -   name: Set up Gradle
+                uses: gradle/actions/setup-gradle@v3
+            -   name: check formatting
+                run: ./gradlew ktlintCheck --no-daemon
+            -   name: run gradle build
+                run: |
+                    ./gradlew clean build
+            -   name: Add coverage to PR
+                if: github.actor != 'dependabot[bot]'
+                uses: madrapps/jacoco-report@v1.6
+                with:
+                    paths: ${{ github.workspace }}/build/reports/jacoco/test/jacocoTestReport.xml
+                    token: ${{ secrets.GITHUB_TOKEN }}
+                    title: "Test Coverage Report"
+                    update-comment: true
