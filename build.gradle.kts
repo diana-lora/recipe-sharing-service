@@ -10,7 +10,7 @@ plugins {
     java
 }
 
-group = "net.azeti.challenge.recipe"
+group = "net.azeti.recipe"
 extra["testcontainersVersion"] = "1.19.8"
 java.sourceCompatibility = JavaVersion.VERSION_21
 java.targetCompatibility = JavaVersion.VERSION_21
