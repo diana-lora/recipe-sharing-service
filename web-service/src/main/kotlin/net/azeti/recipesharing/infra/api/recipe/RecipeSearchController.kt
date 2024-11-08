@@ -40,8 +40,9 @@ class RecipeSearchController(
         @RequestParam(required = false) username: String?,
         @Parameter(description = "Separate words with '+'.")
         @RequestParam(required = false) title: String?,
+        @RequestParam(required = false) servings: Int?,
     ): List<RecipeResponse> {
         expectTrueOr(username != null || title != null) { throw InvalidParameterException("invalid.query", "Either username or title must be provided") }
-        return recipeSearchService.search(username, title)
+        return recipeSearchService.search(username, title, servings)
     }
 }

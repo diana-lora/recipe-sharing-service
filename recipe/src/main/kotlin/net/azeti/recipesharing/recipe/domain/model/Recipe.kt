@@ -15,7 +15,7 @@ data class Recipe(
 )
 
 data class Ingredient(
-    val value: Double,
+    var value: Double,
     val unit: IngredientUnits,
     val type: String,
 )

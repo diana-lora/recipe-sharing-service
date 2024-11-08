@@ -11,7 +11,7 @@ data class RecipeResponse(
 )
 
 data class IngredientResponse(
-    val value: Double,
+    var value: Double,
     val unit: IngredientUnitsApi,
     val type: String,
 )
