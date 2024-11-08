@@ -22,7 +22,32 @@ class RecipeQueryServiceImpl(
     override fun search(
         username: String?,
         title: String?,
+        expectedServings: Int?,
     ): List<Recipe> {
-        return recipeRepository.search(username, title).map { it.toDomain() }
+        return recipeRepository.search(username, title)
+            .map { aggregate ->
+                val recipe = aggregate.toDomain()
+                if (expectedServings == null) {
+                    recipe
+                } else {
+                    adjustIngredientsToExpectedServings(recipe, expectedServings)
+                }
+            }
+    }
+
+    private fun adjustIngredientsToExpectedServings(
+        recipe: Recipe,
+        expectedServings: Int,
+    ): Recipe {
+        // Assume if there is no servings amount, it is for 2 servings
+        val recipeServings = (recipe.servings ?: 2).toDouble()
+
+        val multiplier: Double = expectedServings / recipeServings
+
+        val newIngredients =
+            recipe.ingredients.map { ingredient ->
+                ingredient.copy(value = ingredient.value * multiplier)
+            }
+        return recipe.copy(ingredients = newIngredients, servings = expectedServings)
     }
 }

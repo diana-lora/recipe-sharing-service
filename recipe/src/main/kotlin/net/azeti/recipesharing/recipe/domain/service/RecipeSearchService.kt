@@ -6,5 +6,6 @@ interface RecipeSearchService {
     fun search(
         username: String?,
         title: String?,
+        expectedServings: Int?,
     ): List<Recipe>
 }

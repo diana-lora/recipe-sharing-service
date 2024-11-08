@@ -12,7 +12,8 @@ class RecipeSearchApplicationService(
     fun search(
         username: String?,
         title: String?,
+        expectedServings: Int?,
     ): List<RecipeResponse> {
-        return recipeSearchService.search(username, title).map { it.toApi() }
+        return recipeSearchService.search(username, title, expectedServings).map { it.toApi() }
     }
 }

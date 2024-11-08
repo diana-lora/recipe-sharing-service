@@ -1,5 +1,7 @@
 package net.azeti.recipesharing.recipe.domain.model
 
+import net.azeti.recipesharing.recipe.infra.api.commmands.CreateRecipeCommand
+
 class RecipeAggregate(initialState: RecipeState) {
     private var state = initialState
 
@@ -18,28 +20,29 @@ class RecipeAggregate(initialState: RecipeState) {
     val ingredients: List<Ingredient>
         get() = state.ingredients
 
-    fun updateState(recipe: Recipe): RecipeAggregate {
-        val newState =
-            RecipeState(
-                id = state.id,
-                title = recipe.title,
-                description = recipe.description,
-                username = state.username,
-                instructions = recipe.instructions,
-                servings = recipe.servings,
-                ingredients =
-                    recipe.ingredients.map {
-                        Ingredient(
-                            value = it.value,
-                            unit = it.unit,
-                            type = it.type,
-                        )
-                    },
-            )
-        val newAggregate = RecipeAggregate(newState)
-        newAggregate.checkValidity()
-        state = newState
-        return newAggregate
+    fun updateTitle(title: String) {
+        if (title == state.title) return
+        state = state.copy(title = title)
+    }
+
+    fun updateDescription(description: String) {
+        if (description == state.description) return
+        state = state.copy(description = description)
+    }
+
+    fun updateServings(servings: Int) {
+        if (servings == state.servings) return
+        state = state.copy(servings = servings)
+    }
+
+    fun updateInstructions(instructions: String) {
+        if (instructions == state.instructions) return
+        state = state.copy(instructions = instructions)
+    }
+
+    fun updateIngredients(ingredients: List<Ingredient>) {
+        if (ingredients == state.ingredients) return
+        state = state.copy(ingredients = ingredients)
     }
 
     fun toDomain(): Recipe {
@@ -76,19 +79,19 @@ class RecipeAggregate(initialState: RecipeState) {
     )
 
     companion object {
-        fun create(recipe: Recipe): RecipeAggregate {
+        fun create(command: CreateRecipeCommand): RecipeAggregate {
             val state =
                 RecipeState(
-                    title = recipe.title,
-                    description = recipe.description,
-                    username = recipe.username,
-                    instructions = recipe.instructions,
-                    servings = recipe.servings,
+                    title = command.title,
+                    description = command.description,
+                    username = command.requester.username,
+                    instructions = command.instructions,
+                    servings = command.servings,
                     ingredients =
-                        recipe.ingredients.map {
+                        command.ingredients.map {
                             Ingredient(
                                 value = it.value,
-                                unit = it.unit,
+                                unit = it.unit.toDomain(),
                                 type = it.type,
                             )
                         },

@@ -3,13 +3,18 @@ package net.azeti.recipesharing.recipe.domain.model
 import io.kotest.matchers.collections.shouldNotBeEmpty
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
+import net.azeti.recipesharing.core.defaultUserDetails
+import net.azeti.recipesharing.recipe.infra.api.commmands.CreateRecipeCommand
+import net.azeti.recipesharing.recipe.infra.api.commmands.IngredientCommand
+import net.azeti.recipesharing.recipe.infra.api.commmands.UpdateRecipeCommand
+import net.azeti.recipesharing.recipe.infra.api.dto.IngredientUnitsApi
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class RecipeAggregateTest {
     @Test
     fun `Create RecipeAggregate successfully`() {
-        val recipe = defaultRecipe()
+        val recipe = defaultCreateRecipeCommand()
 
         val aggregate = RecipeAggregate.create(recipe)
 
@@ -79,18 +84,12 @@ class RecipeAggregateTest {
                     ingredients = listOf(Ingredient(value = 1.0, unit = IngredientUnits.GRAM, type = "type")),
                 ),
             )
-        val recipe =
-            Recipe(
-                id = 1,
-                title = "updated title",
-                description = "updated description",
-                username = "user",
-                instructions = "updated instructions",
-                servings = 2,
-                ingredients = listOf(Ingredient(value = 2.0, unit = IngredientUnits.GRAM, type = "type")),
-            )
 
-        aggregate.updateState(recipe)
+        aggregate.updateTitle("updated title")
+        aggregate.updateDescription("updated description")
+        aggregate.updateInstructions("updated instructions")
+        aggregate.updateServings(2)
+        aggregate.updateIngredients(listOf(Ingredient(value = 2.0, unit = IngredientUnits.GRAM, type = "type")))
 
         aggregate.title shouldBe "updated title"
         aggregate.instructions shouldBe "updated instructions"
@@ -123,6 +122,40 @@ class RecipeAggregateTest {
         ),
     )
 }
+
+fun defaultCreateRecipeCommand(
+    username: String = "username",
+    title: String = "title",
+    description: String = "description",
+    instructions: String = "instructions",
+    servings: Int = 1,
+    ingredients: List<IngredientCommand> = listOf(IngredientCommand(1.0, IngredientUnitsApi.GRAM, "type")),
+) = CreateRecipeCommand(
+    title = title,
+    description = description,
+    instructions = instructions,
+    servings = servings,
+    ingredients = ingredients,
+    requester = defaultUserDetails(username = username),
+)
+
+fun defaultUpdateRecipeCommand(
+    id: Long = 1,
+    username: String = "username",
+    title: String = "title",
+    description: String = "description",
+    instructions: String = "instructions",
+    servings: Int = 1,
+    ingredients: List<IngredientCommand> = listOf(IngredientCommand(1.0, IngredientUnitsApi.GRAM, "type")),
+) = UpdateRecipeCommand(
+    id = id,
+    title = title,
+    description = description,
+    instructions = instructions,
+    servings = servings,
+    ingredients = ingredients,
+    requester = defaultUserDetails(username = username),
+)
 
 fun defaultRecipe(
     id: Long = 0,
